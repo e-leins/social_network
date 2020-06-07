@@ -4,7 +4,12 @@
 }
 li {
     list-style-type:none;
+
 }
-.item {
-    color: azure;
+.item a {
+    color: white;
+    margin:5px;
 }
+.item a.active {
+     color: lightcoral;
+ }
