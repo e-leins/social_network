@@ -11,7 +11,8 @@ import {Music} from "./components/Music/Music";
 import {Setting} from "./components/Setting/Setting";
 import {Dialogs} from "./components/Dialogs/Dialogs";
 
-function App() {
+function App(props:any) {
+
     return (
         <BrowserRouter>
             <div className='app-wrapper'>
@@ -19,11 +20,11 @@ function App() {
                 <Navbar/>
 
                 <div className="app-wrapper-content">
-                    <Route path='/dialogs'component={Dialogs}/>
-                    <Route path='/profile' component={Profile}/>
-                    <Route path='/news' component={News}/>
-                    <Route path='/music' component={Music}/>
-                    <Route path='/setting' component={Setting}/>
+                    <Route path='/dialogs' render={()=><Dialogs dialogs={props.state.dialogsPage.dialogs} messages={props.state.dialogsPage.messages}/>}/>
+                    <Route path='/profile' render={()=><Profile posts={props.state.profilePage.posts}/>}/>
+                    <Route path='/news' render={()=><News/>}/>
+                    <Route path='/music' render={()=><Music/>}/>
+                    <Route path='/setting' render={()=><Setting/>}/>
 
 
 

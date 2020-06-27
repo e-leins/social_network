@@ -3,11 +3,13 @@ import classes from "./Profile.module.css"
 import {MyPosts} from "./MyPosts/MyPosts";
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 
-export function Profile() {
+export function Profile(props:any) {
+
+
     return (
         <div className="app-wrapper.content">
             <ProfileInfo/>
-            <MyPosts/>
+            <MyPosts posts={props.posts}/>
         </div>
     )
 }

@@ -1,16 +1,17 @@
 import React from "react";
 import classes from "./MyPosts.module.css"
 import {Post} from "./Post/Post";
+type ProfilePageType={
+    posts:Array<PostType>
+}
+type PostType={
+    id:number
+    message:string
+    likesCount:number
+}
+export function MyPosts(props:ProfilePageType) {
 
-
-
-export function MyPosts() {
-     let posts =[
-         {id:1, message:"Hi, howe are you",likesCount:12 },
-         {id:2, message:"Im fine, thanks", likesCount:10},
-         {id:3, message:"Nice to meet you!!",likesCount: 0},
-     ]
-let postsElements= posts.map(posts=> <Post message={posts.message} likesCount={posts.likesCount}/>);
+let postsElements= props.posts.map(posts=> <Post key={posts.id} message={posts.message} likesCount={posts.likesCount}/>);
      return (
              <div>
                  <div className={classes.posts}><h3>My posts</h3></div>
