@@ -1,15 +1,21 @@
 import React from "react";
-import classes from "./Profile.module.css"
 import {MyPosts} from "./MyPosts/MyPosts";
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
+import {ProfilePageType} from "../../Redux/state";
 
-export function Profile(props:any) {
+type PropsType = {
+    state: ProfilePageType
+    addPost:(message:string)=>void
+}
+export function Profile(props:PropsType) {
 
 
     return (
         <div className="app-wrapper.content">
             <ProfileInfo/>
-            <MyPosts posts={props.posts}/>
+            <MyPosts posts={props.state.posts}
+            addPost={props.addPost}
+            />
         </div>
     )
 }
