@@ -1,30 +1,34 @@
-import React from "react";
+import React, {ChangeEvent} from "react";
 import classes from "./MyPosts.module.css"
 import {Post} from "./Post/Post";
-import {PostType} from "../../../Redux/state";
+import {PostType, updateNewPostText} from "../../../Redux/state";
 
 type ProfilePageType = {
     posts: Array<PostType>
     addPost: (message: string) => void
+    newPostText:string
+    updateNewPostText:(newText: string) => void
 }
 
 
 export function MyPosts(props: ProfilePageType) {
-    let newPostElement = React.createRef<HTMLTextAreaElement>();
     const addPost = () => {
-        if (newPostElement.current) {
-            props.addPost(newPostElement.current.value)
-        }
-
+        props.addPost(props.newPostText)
+        props.updateNewPostText('');
     }
-    let onPostChange= ()=> {}
-    let postsElements = props.posts.map(posts => <Post key={posts.id} id={posts.id} message={posts.message}
-                                                       likesCount={posts.likesCount}/>);
+
+    let postsElements = props.posts.map(posts =>
+        <Post key={posts.id}
+              id={posts.id}
+              message={posts.message}
+              likesCount={posts.likesCount}/>);
+    let onPostChange = (e:ChangeEvent<HTMLTextAreaElement>) => {props.updateNewPostText(e.currentTarget.value)
+    }
     return (
         <div>
             <div className={classes.posts}><h3>My posts</h3></div>
             <div className={classes.posts}>
-                <textarea  onChange= {onPostChange} ref={newPostElement} />
+                <textarea  value={props.newPostText} onChange={onPostChange}/>
                 <div>
                     <button onClick={addPost}> Add post</button>
                 </div>
@@ -36,3 +40,4 @@ export function MyPosts(props: ProfilePageType) {
         </div>
     )
 }
+
