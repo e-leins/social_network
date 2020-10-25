@@ -1,7 +1,7 @@
 import React, {ChangeEvent} from "react";
 import classes from "./MyPosts.module.css"
 import {Post} from "./Post/Post";
-import {PostType, updateNewPostText} from "../../../Redux/state";
+import {PostType} from "../../../Redux/state";
 
 type ProfilePageType = {
     posts: Array<PostType>
@@ -14,7 +14,7 @@ type ProfilePageType = {
 export function MyPosts(props: ProfilePageType) {
     const addPost = () => {
         props.addPost(props.newPostText)
-        props.updateNewPostText('');
+
     }
 
     let postsElements = props.posts.map(posts =>
