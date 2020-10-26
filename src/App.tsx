@@ -25,9 +25,9 @@ export const App: React.FC<PropsType> = (props) => {
             <div className="app-wrapper-content">
                 <Route path='/dialogs' render={() => <Dialogs state={state.dialogsPage}/>}/>
                 <Route path='/profile' render={() => <Profile profilePage={state.profilePage}
-                                                              addPost={props.store.addPost.bind(props.store)}
+                                                              dispatch={store.dispatch.bind(props.store)}
                                                               newPostText={state.profilePage.newPostText}
-                                                              updateNewPostText={props.store.updateNewPostText.bind(props.store)}/>}/>
+                                                            />}/>
                 <Route path='/news' render={() => <News/>}/>
                 <Route path='/music' render={() => <Music/>}/>
                 <Route path='/setting' render={() => <Setting/>}/>
