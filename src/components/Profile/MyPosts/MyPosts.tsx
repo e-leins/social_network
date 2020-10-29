@@ -11,7 +11,6 @@ type ProfilePageType = {
 }
 
 export function MyPosts(props: ProfilePageType) {
-    let newPostElement = React.createRef<HTMLTextAreaElement>();
     const addPost = () => {
         props.dispatch(addPostActionCreator())
     }
@@ -23,19 +22,18 @@ export function MyPosts(props: ProfilePageType) {
               likesCount={posts.likesCount}/>);
 
 
-
-    let onPostChange = () => {
-        if (newPostElement.current) {
-            let text = newPostElement.current.value
-            let action = updateNewPostTextActionCreator(text)
-            props.dispatch(action)
-        }
+    let onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        let text = e.currentTarget.value
+        let action = updateNewPostTextActionCreator(text)
+        props.dispatch(action)
     }
+
+
     return (
         <div>
             <div className={classes.posts}><h3>My posts</h3></div>
             <div className={classes.posts}>
-                <textarea  value={props.newPostText} onChange={onPostChange} ref={newPostElement} />
+                <textarea  value={props.newPostText} onChange={onPostChange}  />
                 <div>
                     <button onClick={addPost}> Add post</button>
                 </div>
