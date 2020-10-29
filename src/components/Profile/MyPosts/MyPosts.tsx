@@ -1,7 +1,7 @@
 import React, {ChangeEvent} from "react";
 import classes from "./MyPosts.module.css"
 import {Post} from "./Post/Post";
-import {PostType} from "../../../Redux/state";
+import {addPostActionCreator, PostType, updateNewPostTextActionCreator} from "../../../Redux/state";
 
 type ProfilePageType = {
     posts: Array<PostType>
@@ -10,11 +10,10 @@ type ProfilePageType = {
 
 }
 
-
 export function MyPosts(props: ProfilePageType) {
     let newPostElement = React.createRef<HTMLTextAreaElement>();
     const addPost = () => {
-        props.dispatch({type:'ADD-POST'})
+        props.dispatch(addPostActionCreator())
     }
 
     let postsElements = props.posts.map(posts =>
@@ -28,7 +27,7 @@ export function MyPosts(props: ProfilePageType) {
     let onPostChange = () => {
         if (newPostElement.current) {
             let text = newPostElement.current.value
-            let action = {type: 'UPDATE-NEW-POST', newText: text}
+            let action = updateNewPostTextActionCreator(text)
             props.dispatch(action)
         }
     }

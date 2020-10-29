@@ -23,7 +23,9 @@ export const App: React.FC<PropsType> = (props) => {
             <Header/>
             <Navbar/>
             <div className="app-wrapper-content">
-                <Route path='/dialogs' render={() => <Dialogs state={state.dialogsPage}/>}/>
+
+                <Route path='/dialogs' render={() =>
+                    <Dialogs store={props.store}/>}/>
                 <Route path='/profile' render={() => <Profile profilePage={state.profilePage}
                                                               dispatch={store.dispatch.bind(props.store)}
                                                               newPostText={state.profilePage.newPostText}
