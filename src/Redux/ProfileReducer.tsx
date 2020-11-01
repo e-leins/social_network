@@ -1,6 +1,6 @@
 
 import React from "react";
-import {PostType, RootStateType, StoreType} from "./state";
+import {PostType, RootStateType, StoreType} from "./store";
 
 
 const ADD_POST = 'ADD-POST';

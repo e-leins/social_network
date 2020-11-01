@@ -1,5 +1,5 @@
 import React from "react";
-import {RootStateType} from "./state";
+import {RootStateType} from "./store";
 
 const UPDATE_NEW_MESSAGE_BODY='UPDATE-NEW-MESSAGE-BODY';
 const SEND_MESSAGE ='SEND-MESSAGE'

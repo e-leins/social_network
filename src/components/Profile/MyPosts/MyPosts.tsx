@@ -1,7 +1,7 @@
 import React, {ChangeEvent} from "react";
 import classes from "./MyPosts.module.css"
 import {Post} from "./Post/Post";
-import {addPostActionCreator, PostType, updateNewPostTextActionCreator} from "../../../Redux/state";
+import {addPostActionCreator, PostType, updateNewPostTextActionCreator} from "../../../Redux/store";
 
 type ProfilePageType = {
     posts: Array<PostType>

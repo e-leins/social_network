@@ -100,9 +100,8 @@ export let store: StoreType = {
         this._callSubscriber();
     },
     dispatch(action: any) {
-        // @ts-ignore
+
         this._state.profilePage = profileReducer(this._state.profilePage, action);
-        // @ts-ignore
         this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
         //this._state.sidebarPage= dialogsReducer(this._state.sidebarPage, action);
         this._callSubscriber();

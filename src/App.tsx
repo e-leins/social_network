@@ -8,7 +8,7 @@ import {News} from "./components/News/News";
 import {Music} from "./components/Music/Music";
 import {Setting} from "./components/Setting/Setting";
 import {Dialogs} from "./components/Dialogs/Dialogs";
-import {store, StoreType} from "./Redux/state";
+import {store, StoreType} from "./Redux/store";
 
 type PropsType = {
     store: StoreType

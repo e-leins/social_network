@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./Message.module.css"
-import {MessageType} from "../../../Redux/state";
+import {MessageType} from "../../../Redux/store";
 
 
 
