@@ -1,18 +1,19 @@
 import React, {ChangeEvent} from "react";
 import classes from "./MyPosts.module.css"
 import {Post} from "./Post/Post";
-import {addPostActionCreator, PostType, updateNewPostTextActionCreator} from "../../../Redux/store";
+import { PostType} from "../../../Redux/store";
 
 type ProfilePageType = {
     posts: Array<PostType>
-    dispatch:(action:any) => void
     newPostText:string
+    addPost: ()=>void
+    updateNewPostText: (text: string) => void
 
 }
 
 export function MyPosts(props: ProfilePageType) {
-    const addPost = () => {
-        props.dispatch(addPostActionCreator())
+    const onAddPost = () => {
+        props.addPost();
     }
 
     let postsElements = props.posts.map(posts =>
@@ -24,8 +25,7 @@ export function MyPosts(props: ProfilePageType) {
 
     let onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
         let text = e.currentTarget.value
-        let action = updateNewPostTextActionCreator(text)
-        props.dispatch(action)
+        props.updateNewPostText(text);
     }
 
 
@@ -35,7 +35,7 @@ export function MyPosts(props: ProfilePageType) {
             <div className={classes.posts}>
                 <textarea  value={props.newPostText} onChange={onPostChange}  />
                 <div>
-                    <button onClick={addPost}> Add post</button>
+                    <button onClick={onAddPost}> Add post</button>
                 </div>
                 <div>
                     <button> Remove</button>

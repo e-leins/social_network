@@ -9,13 +9,14 @@ import {Music} from "./components/Music/Music";
 import {Setting} from "./components/Setting/Setting";
 import {Dialogs} from "./components/Dialogs/Dialogs";
 import {store, StoreType} from "./Redux/store";
+import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
 
 type PropsType = {
     store: StoreType
 }
 
 export const App: React.FC<PropsType> = (props) => {
-    const state = store.getState();
+
 
     return (
 
@@ -25,10 +26,8 @@ export const App: React.FC<PropsType> = (props) => {
             <div className="app-wrapper-content">
 
                 <Route path='/dialogs' render={() =>
-                    <Dialogs store={props.store}/>}/>
-                <Route path='/profile' render={() => <Profile profilePage={state.profilePage}
-                                                              dispatch={store.dispatch.bind(props.store)}
-                                                              newPostText={state.profilePage.newPostText}
+                    <DialogsContainer store={props.store}/>}/>
+                <Route path='/profile' render={() => <Profile store={props.store}
                                                             />}/>
                 <Route path='/news' render={() => <News/>}/>
                 <Route path='/music' render={() => <Music/>}/>
